@@ -1,23 +1,23 @@
-# bubble sort
+# selection sort
 
 import random
 import time
 
 
-def bubble(n: int) -> tuple[list[float], int]:
+def selection(n: int) -> tuple[list[float], int]:
     a = [random.random() for _ in range(n)]
 
+    ret = []
     iter = 0
 
-    for i in range(len(a)):
-        done = False
-        for j in range(len(a) - i - 1):
-            if a[j] > a[j + 1]:
-                a[j], a[j + 1] = a[j + 1], a[j]
-                done = True
+    for _ in range(len(a)):
+        least = 0
+        for j in range(len(a)):
+            if a[least] > a[j]:
+                least = j
             iter += 1
-        if not done:
-            break
+        ret.append(a[least])
+        a.pop(least)
 
     return a, iter
 
@@ -28,7 +28,7 @@ time_sum = 0
 
 for i in range(n):
     start = time.time()
-    lst, iter = bubble(100)
+    lst, iter = selection(100)
     time_sum += time.time() - start
     assert lst == sorted(lst), "not correct"
     iter_sum += iter
