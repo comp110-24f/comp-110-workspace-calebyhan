@@ -14,10 +14,9 @@ def input_guess(secret_word_len: int) -> str:
     # if the guess is the right length, return it. otherwise, loop until valid
     if len(guess) == secret_word_len:
         return guess
-    while True:
-        guess: str = input(f"That wasn't {str(secret_word_len)} chars! Try again: ")
-        if len(guess) == secret_word_len:
-            return guess
+    while len(guess) != secret_word_len:
+        guess = input(f"That wasn't {str(secret_word_len)} chars! Try again: ")
+    return guess
 
 
 def contains_char(secret_word: str, char_guess: str) -> bool:
@@ -43,8 +42,8 @@ def emojified(guess: str, secret_word: str) -> str:
     """
     Outputs the emoji string given the secret word and the guess.
 
-    :param guess:
-    :param secret_wrrd
+    :param guess: The user's guess
+    :param secret_word: The secret that the user is trying to guess
     """
     # check that the guess and the secret word are the same length
     assert len(guess) == len(secret_word)
@@ -78,10 +77,11 @@ def main(secret: str) -> None:
     """
     The main function that takes in the secret word and plays the wordle game.
 
-    :param secret:
+    :param secret: The secret that the user is trying to guess
     """
     turn: int = 1
-    while turn < 7:
+    game_ended = False
+    while turn < 7 and game_ended is False:
         # print turn number
         print("=== Turn " + str(turn) + "/6 ===")
 
@@ -91,14 +91,15 @@ def main(secret: str) -> None:
 
         # if the user won, then exit the game
         if guess == secret:
-            print("You won in " + str(turn) + " turns!")
-            quit()
+            print("You won in " + str(turn) + "/6 turns!")
+            game_ended = True
 
         # increment the turn counter
         turn += 1
 
     # the user didn't guess in the right amount of guesses
-    print("X/6 - Sorry, try again tomorrow!")
+    if not game_ended:
+        print("X/6 - Sorry, try again tomorrow!")
     # the main function to run the wordle game
 
 
