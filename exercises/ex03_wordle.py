@@ -9,15 +9,13 @@ def input_guess(secret_word_len: int) -> str:
 
     :param secret_word_len: Length of the secret word we are trying to guess
     """
-    guess: str = input("Enter a " + str(secret_word_len) + " character word: ")
+    guess: str = input(f"Enter a {str(secret_word_len)} character word: ")
 
     # if the guess is the right length, return it. otherwise, loop until valid
     if len(guess) == secret_word_len:
         return guess
     while True:
-        guess: str = input(
-            "That wasn't " + str(secret_word_len) + " chars! Try again: "
-        )
+        guess: str = input(f"That wasn't {str(secret_word_len)} chars! Try again: ")
         if len(guess) == secret_word_len:
             return guess
 
@@ -83,7 +81,7 @@ def main(secret: str) -> None:
     :param secret:
     """
     turn: int = 1
-    while True:
+    while turn < 7:
         # print turn number
         print("=== Turn " + str(turn) + "/6 ===")
 
@@ -98,6 +96,9 @@ def main(secret: str) -> None:
 
         # increment the turn counter
         turn += 1
+
+    # the user didn't guess in the right amount of guesses
+    print("X/6 - Sorry, try again tomorrow!")
     # the main function to run the wordle game
 
 
