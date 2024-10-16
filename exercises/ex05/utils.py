@@ -2,9 +2,10 @@
 
 __author__ = "730738108"
 
+
 def only_evens(lst: list[int]) -> list[int]:
     """Returns a list of only the even numbers in a list.
-    
+
     :param lst: a list of integers
     :return: a list of only the even numbers in the list
     """
@@ -18,7 +19,7 @@ def only_evens(lst: list[int]) -> list[int]:
 
 def sub(lst: list[int], a: int, b: int) -> list[int]:
     """Returns a list of integers from a list between two indices.
-    
+
     :param lst: a list of integers
     :param a: an integer
     :param b: an integer
@@ -44,7 +45,7 @@ def sub(lst: list[int], a: int, b: int) -> list[int]:
 
 def add_at_index(lst: list[int], a: int, b: int) -> None:
     """Returns a list of integers with a number added at a specific index.
-    
+
     :param lst: a list of integers
     :param a: an integer
     :param b: an index to add the integer
@@ -61,13 +62,12 @@ def add_at_index(lst: list[int], a: int, b: int) -> None:
 
     # create buffer space
     lst.append(0)
-    
+
     # shift elements to the right
     i: int = len(lst) - 1
     while i > b:
         lst[i] = lst[i - 1]
         i -= 1
-    
+
     # insert the new element
     lst[b] = a
-    

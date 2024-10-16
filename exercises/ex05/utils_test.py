@@ -4,12 +4,14 @@ __author__ = "730738108"
 
 from utils import only_evens, sub, add_at_index
 
+
 def test_only_evens() -> None:
     """Tests only_evens function."""
     assert only_evens([1, 2, 3]) == [2]
     assert only_evens([2, 3, 4]) == [2, 4]
     assert only_evens([]) == []
     return None
+
 
 def test_sub() -> None:
     """Tests sub function."""
