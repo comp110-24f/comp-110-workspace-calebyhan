@@ -71,3 +71,4 @@ def add_at_index(lst: list[int], a: int, b: int) -> None:
 
     # insert the new element
     lst[b] = a
+    return None
