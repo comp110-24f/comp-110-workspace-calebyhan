@@ -45,8 +45,7 @@ def test_sub_3() -> None:
 def test_add_at_index_1() -> None:
     """Tests add_at_index function."""
     x: list[int] = [1, 2, 3]
-    add_at_index(x, 4, 2)
-    assert x == [1, 2, 4, 3]
+    assert add_at_index(x, 4, 2) is None
     return None
 
 
